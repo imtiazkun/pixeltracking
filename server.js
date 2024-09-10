@@ -10,7 +10,7 @@ app.use(express.static(path.join(__dirname, "public")));
 
 // Function to log IP addresses to a text file
 function log(name) {
-    const logMessage = `${new Date().toISOString()} - name: ${name}`;
+    const logMessage = `${new Date().toISOString()} - name: ${name}\n\n`;
     fs.appendFileSync('ip_log.txt', logMessage, (err) => {
         if (err) {
             console.error('Error writing to file', err);
