@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "main": "server.js",
   "license": "MIT",
+  "scripts": {
+    "start": "PORT=5001 node server.js"
+  },
   "dependencies": {
     "express": "^4.20.0",
     "express-rate-limit": "^7.4.0"
