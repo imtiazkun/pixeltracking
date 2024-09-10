@@ -9,8 +9,8 @@ app.set('trust proxy', true);
 app.use(express.static(path.join(__dirname, "public")));
 
 // Function to log IP addresses to a text file
-function log(ipAddress) {
-    const logMessage = `${new Date().toISOString()} - IP: ${ipAddress}\n`;
+function log(ipAddress, name) {
+    const logMessage = `${new Date().toISOString()} - IP: ${ipAddress} - Name: ${name}`;
     fs.appendFileSync('ip_log.txt', logMessage, (err) => {
         if (err) {
             console.error('Error writing to file', err);
@@ -28,9 +28,10 @@ const limiter = rateLimit({
 
 app.use(limiter);
 
+
 app.get('/pixel/image.jpg', (req, res) => {
     const ipAddress = req.headers['x-forwarded-for'] || req.ip;
-    console.log(`Image was loaded by IP: ${ipAddress}`);
+    console.log(`Image was loaded by IP: ${ipAddress, req.query.name}`);
 
     log(ipAddress);
 
