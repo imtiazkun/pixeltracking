@@ -30,7 +30,7 @@ app.use(limiter);
 
 
 app.get('/pixel/image.jpg', (req, res) => {
-    console.log(`Image was loaded by IP: ${req.query.name}`);
+    console.log(`${new Date().toISOString()} IP: ${req.query.name}`);
 
     log(req.query.name);
 
